@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100%;
+}
+
+html {
+  --colorPrimary: #5CDB95;
+  --colorSecondary: #05386B;
+  --colorAccent: #379683;
+  --colorAccent2: #D81E5B; // use later
+  --colorText: #FCEFEF;
+
+  scroll-behavior: smooth;
+
+  --smooth-shadow-small: 0 0.5px 0.5px rgba(0, 0, 0, 0.05), 
+  0 1px 1px rgba(0,0,0,0.05), 
+  0 2px 2px rgba(0,0,0,0.05), 
+  0 4px 4px rgba(0,0,0,0.05),
+  0 8px 8px rgba(0,0,0,0.05);
+
+  --smooth-shadow-medium: 0 1px 1px rgba(0, 0, 0, 0.065), 
+  0 2px 2px rgba(0,0,0,0.065), 
+  0 3px 3px rgba(0,0,0,0.065), 
+  0 5px 5px rgba(0,0,0,0.065),
+  0 8px 8px rgba(0,0,0,0.065);
+
+  --smooth-shadow-big: 0 1px 1px rgba(0, 0, 0, 0.08), 
+  0 2px 2px rgba(0,0,0,0.08), 
+  0 4px 4px rgba(0,0,0,0.08), 
+  0 8px 8px rgba(0,0,0,0.08),
+  0 16px 16px rgba(0,0,0,0.08);
+}
+
+*{
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
