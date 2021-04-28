@@ -3,18 +3,15 @@ import './search-box.styles.scss';
 import { Link } from 'react-router-dom';
 import Input from '../input/input.component';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { searchAlbums, searchArtists } from '../../redux/search/search.actions';
 
 
 class SearchBox extends React.Component {
-
-
-    // const {displayName, email, password, confirmPassword} = this.state
     constructor(){
         super();
-
         this.state = {
-            activeButton: '',
-            buttonTypes: ['albums', 'artists', 'all'],
+            buttonTypes: ['albums', 'artists'],
             searchWord: ''
         }
     }
@@ -25,19 +22,25 @@ class SearchBox extends React.Component {
     }
 
     handleButtonClick = event => {
-        axios.get('http://localhost:4000/api/itunes/abc').then(res => {
-            console.log(res);
-        })
-        /*
-        let request = new Request('https://itunes.apple.com/search?term=jack+johnson');
-        fetch(request).then(res => res.json())
-        .then(data => console.log(data));
-        */
-        console.log(event.nativeEvent.target.innerHTML);
+        event.preventDefault();
+        const { buttonTypes, searchWord} = this.state;
+        if(event.nativeEvent.target.innerHTML === buttonTypes[0]){
+            axios.get(`http://localhost:4000/api/itunes/albums/{${searchWord}}`)
+            .then(res => {
+                const array = res.data || [];
+                this.props.searchAlbums(array);
+            });            
+        } else{
+            axios.get(`http://localhost:4000/api/itunes/artists/{${searchWord}}`)
+            .then(res => {
+                const array = res.data || [];
+                this.props.searchArtists(array);
+            });   
+        }
     }
 
     render(){
-        const {buttonTypes, activeButton, searchWord} = this.state;
+        const {buttonTypes, searchWord} = this.state;
         return(
             <div>  
                 <div className="input">
@@ -52,15 +55,18 @@ class SearchBox extends React.Component {
                 <div className="buttons">
                 {
                     buttonTypes.map((button,i) => 
-                        (<Link onClick={this.handleButtonClick} className="option" key={i} to={'/search/' + button}>{button}</Link>)
+                        (<Link onClick={(e) => this.handleButtonClick(e)} className="option" key={i} to={'/search/' + button}>{button}</Link>)
                     )
-                }
+                } 
                 </div>
             </div>
         )        
     }
-
-    
 }
 
-export default SearchBox;
+const mapDispatchToProps = dispatch => ({
+    searchArtists: (artists) => dispatch(searchArtists(artists)),
+    searchAlbums: (albums) => dispatch(searchAlbums(albums)),
+});
+
+export default connect(null, mapDispatchToProps)(SearchBox);

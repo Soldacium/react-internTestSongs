@@ -1,13 +1,13 @@
 import SearchActionTypes from './search.types'
 
-export const searchAlbums = albumName => ({
+export const searchAlbums = albums => ({
     type: SearchActionTypes.SEARCH_ALBUMS,
-    payload: albumName
+    payload: albums
 });
 
-export const searchArtists = artistName => ({
+export const searchArtists = artists => ({
     type: SearchActionTypes.SEARCH_ARTISTS,
-    payload: artistName
+    payload: artists
 });
 
 export const searchAll = name => ({

@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
-const selectSaved = state => state.saved;
+const selectSearch = state => state.search;
 
-export const selectSavedAlbums = createSelector(
-    [selectSaved],
-    (saved) => saved.savedAlbums
+export const selectSearchedAlbums = createSelector(
+    [selectSearch],
+    (searched) => searched.searchedAlbums
 );
 
-export const selectSavedArtists = createSelector(
-    [selectSaved],
-    (saved) => saved.savedArtists
+export const selectSearchedArtists = createSelector(
+    [selectSearch],
+    (searched) => searched.searchedArtists
 )

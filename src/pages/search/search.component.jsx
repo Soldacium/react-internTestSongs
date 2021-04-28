@@ -5,9 +5,10 @@ import { Route, Switch} from 'react-router-dom';
 import Albums from '../albums/albums.component';
 import Artists from '../artists/artists.component';
 import SearchBox from '../../components/search-box/search-box.component';
+//import { connect } from 'react-redux';
+// import { searchAlbums, searchArtists } from '../../redux/search/search.actions';
 
 const SearchPage = ({match}) => {
-    console.log(match);
     return(
         <div className='container'>
             <Nav></Nav>
@@ -23,5 +24,7 @@ const SearchPage = ({match}) => {
         </div>
     )
 }
+
+
 
 export default SearchPage;

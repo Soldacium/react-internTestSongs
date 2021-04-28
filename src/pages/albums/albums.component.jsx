@@ -1,27 +1,25 @@
 import React from 'react';
 import './albums.styles.scss';
 
+import { createStructuredSelector } from 'reselect';
+import { selectSearchedAlbums } from '../../redux/search/search.selectors';
+import { connect } from 'react-redux';
 
-class Albums extends React.Component{
-    constructor() {
-        super()
 
-        this.state = {
-            displayName: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
-        }
-    }
-
-    render(){
-        // const {displayName, email, password, confirmPassword} = this.state
-        return(
-            <div>
-                This is albums
-            </div>
-        )
-    }
+const Albums = ({searchedAlbums}) => {
+    // const {displayName, email, password, confirmPassword} = this.state
+    return(
+        <div>
+            This is albums
+            {
+                searchedAlbums.map((album,i) => <div key={i}>{album.artistId}</div>)
+            }
+        </div>
+    ) 
 }
 
-export default Albums;
+const mapStateToProps = createStructuredSelector({
+    searchedAlbums: selectSearchedAlbums,
+});
+
+export default connect(mapStateToProps)(Albums);

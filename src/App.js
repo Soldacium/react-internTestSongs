@@ -1,8 +1,8 @@
 import './App.scss';
 import { Route, Switch } from 'react-router-dom';
-import SearchPage from './pages/search/search.component'
+import SearchPage from './pages/search/search.component';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Switch>
