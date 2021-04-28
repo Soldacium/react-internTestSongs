@@ -1,9 +1,10 @@
 // import  SearchActionTypes  from './search.types';
 
 const INITIAL_STATE = {
-    searchedAlbums: [],
-    searchedArtists: [],
-    mode: 'albums'
+    resultAlbums: [],
+    resultArtists: [],
+    searchedAlbum: '',
+    searchedArtist: ''
 }
 
 const searchReducer = (state = INITIAL_STATE, action) => {

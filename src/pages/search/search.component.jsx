@@ -4,20 +4,21 @@ import './search.styles.scss';
 import { Route, Switch} from 'react-router-dom';
 import Albums from '../albums/albums.component';
 import Artists from '../artists/artists.component';
+import SearchBox from '../../components/search-box/search-box.component';
 
 const SearchPage = ({match}) => {
+    console.log(match);
     return(
-        <div>
+        <div className='container'>
             <Nav></Nav>
-            <div>
-                Search Page
+            <div className="search-box">
+                <Route path='/search' component={SearchBox}></Route>
             </div>        
-            <div>
+            <div className="routes">
                 <Switch>
-                    <Route path={match.url + "/albums/:name"} component={Albums} /> 
-                    <Route path={match.url + "/artists/:name"} component={Artists} /> 
+                    <Route path={match.url + "/albums"} component={Albums} /> 
+                    <Route path={match.url + "/artists"} component={Artists} /> 
                 </Switch>
-                
             </div>    
         </div>
     )

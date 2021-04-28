@@ -9,7 +9,7 @@ const Nav = () => {
     return(
         <div className='header'>
             <Link className="option" to='/search'>
-                SHOP
+                SEARCH
             </Link>
             <Link className="option" to='/saved'>
                 SAVED
@@ -18,5 +18,4 @@ const Nav = () => {
     )
 }
 
-
-export default Nav
+export default Nav;

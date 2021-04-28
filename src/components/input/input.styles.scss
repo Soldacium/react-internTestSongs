@@ -1,0 +1,64 @@
+
+.input-box {
+    position: relative;
+    padding: 1.2rem 1rem 0.5rem 1rem ;
+    margin-top: 0.5rem;
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    border-radius: 0rem;
+    overflow: hidden;
+
+    .input-field {
+        font-family: inherit;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        font-size: 1rem;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:placeholder-shown ~ .input-label {
+            font-size: 1rem;
+            cursor: text;
+            top: 20px;
+        }
+
+        &:focus {
+            font-weight: 500;
+            border-width: 3px;
+        }
+
+        &:focus ~ .input-label {
+            position: absolute;
+            top: 0.5rem;
+            display: block;
+            transition: 0.2s ease;
+            font-size: 0.8rem;
+            opacity: 1;
+            color: royalblue;
+        }
+
+        &:required,&:invalid {
+            box-shadow: none;
+        }
+    }
+
+    .input-label {
+        position: absolute;
+        top: 0.5rem;
+        display: block;
+        transition: 0.2s;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #000000;
+        opacity: 0.4;
+        pointer-events: none;
+
+
+    }
+}
