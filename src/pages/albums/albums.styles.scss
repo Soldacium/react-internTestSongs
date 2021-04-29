@@ -1,0 +1,31 @@
+.albums-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+
+    .albums-list{
+        display: flex;
+        flex-wrap: wrap;
+        flex: 2 1 15rem;
+        .album{
+            flex: 1 1;
+            min-width: 400px;
+            margin: 0.5rem;
+        }
+    }
+
+    .album-songs{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: calc(20vw - 45px);
+        height: 400px;
+        border: 2px solid black;
+        position: fixed;
+        right: 2vw;
+        height: 50vh;
+    }
+
+
+}

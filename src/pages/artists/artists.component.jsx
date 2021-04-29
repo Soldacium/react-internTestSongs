@@ -1,5 +1,9 @@
 import React from 'react';
 import './artists.styles.scss';
+import { createStructuredSelector } from 'reselect';
+import { selectSearchedArtists } from '../../redux/search/search.selectors';
+import { connect } from 'react-redux';
+import Artist from '../../components/artist/artist.component';
 
 
 class Artists extends React.Component{
@@ -15,12 +19,19 @@ class Artists extends React.Component{
     }
 
     render(){
+        const { searchedArtists } = this.props;
         return(
-            <div>
-                This is artists
+            <div className='artists-container'>
+                {
+                    searchedArtists.map((artist,i) => <Artist key={i} artist={artist}></Artist>)
+                }
             </div>
         )
     }
 }
 
-export default Artists;
+const mapStateToProps = createStructuredSelector({
+    searchedArtists: selectSearchedArtists,
+});
+
+export default connect(mapStateToProps)(Artists);

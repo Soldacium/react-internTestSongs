@@ -1,11 +1,15 @@
 .container{
-    padding: 10% 20%;
+    padding: 10% calc(25% - 75px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.routes{
+    width: 100%;
+    position: relative;
+}
+
 div{
-    color: var(--colorAccent)
 }

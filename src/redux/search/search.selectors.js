@@ -11,3 +11,14 @@ export const selectSearchedArtists = createSelector(
     [selectSearch],
     (searched) => searched.searchedArtists
 )
+
+export const selectViewedArtist = createSelector(
+    [selectSearch],
+    (searched) => searched.viewedArtist
+)
+
+export const selectViewedAlbum = createSelector(
+    [selectSearch],
+    (searched) => searched.viewedAlbum
+)
+

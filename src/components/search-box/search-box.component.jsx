@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import Input from '../input/input.component';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { searchAlbums, searchArtists } from '../../redux/search/search.actions';
+import { setAlbums, setArtists } from '../../redux/search/search.actions';
+import searchIcon from '../../assets/icons/search.svg';
 
 
 class SearchBox extends React.Component {
@@ -22,19 +23,19 @@ class SearchBox extends React.Component {
     }
 
     handleButtonClick = event => {
-        event.preventDefault();
         const { buttonTypes, searchWord} = this.state;
         if(event.nativeEvent.target.innerHTML === buttonTypes[0]){
             axios.get(`http://localhost:4000/api/itunes/albums/{${searchWord}}`)
             .then(res => {
                 const array = res.data || [];
-                this.props.searchAlbums(array);
+                this.props.setAlbums(array);
             });            
         } else{
             axios.get(`http://localhost:4000/api/itunes/artists/{${searchWord}}`)
             .then(res => {
                 const array = res.data || [];
-                this.props.searchArtists(array);
+                this.props.setArtists(array);
+                console.log(array)
             });   
         }
     }
@@ -55,7 +56,11 @@ class SearchBox extends React.Component {
                 <div className="buttons">
                 {
                     buttonTypes.map((button,i) => 
-                        (<Link onClick={(e) => this.handleButtonClick(e)} className="option" key={i} to={'/search/' + button}>{button}</Link>)
+                        (<Link 
+                            onClick={(e) => this.handleButtonClick(e)} 
+                            className="option" 
+                            key={i} 
+                            to={'/search/' + button}>{button}</Link>)
                     )
                 } 
                 </div>
@@ -65,8 +70,8 @@ class SearchBox extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    searchArtists: (artists) => dispatch(searchArtists(artists)),
-    searchAlbums: (albums) => dispatch(searchAlbums(albums)),
+    setArtists: (artists) => dispatch(setArtists(artists)),
+    setAlbums: (albums) => dispatch(setAlbums(albums)),
 });
 
 export default connect(null, mapDispatchToProps)(SearchBox);
