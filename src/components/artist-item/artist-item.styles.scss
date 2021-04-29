@@ -1,0 +1,48 @@
+.artist{
+    padding: 0.5rem 1rem;
+    border: 2px solid rgb(236, 236, 236);
+    border-radius: 0.5rem;
+    position: relative;
+
+    &:hover{
+        .artist-link{
+            opacity: 1;
+        }
+
+        .artist-favourite{
+            opacity: 1;
+        }
+    }
+
+    .artist-link{
+        position: absolute;
+        top: 0.5rem;
+        right: 2rem;
+        opacity: 0;
+
+        img{
+            height: 1rem;
+        }
+    }
+
+    .artist-favourite{
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+        opacity: 0;
+        cursor: pointer;
+
+        img{
+            height: 1rem;
+        }
+    }
+
+    .artist-name{
+        font-size: 1.1rem;
+    }
+
+    .artist-genre{
+        font-size: 0.8rem;
+        color: var(--colorPrimary);
+    }
+}

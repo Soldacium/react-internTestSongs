@@ -18,10 +18,11 @@
     .album-songs{
         display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
         width: calc(20vw - 45px);
         height: 400px;
-        border: 2px solid black;
+        overflow: auto;
+        
+        padding: 1rem;
         position: fixed;
         right: 2vw;
         height: 50vh;

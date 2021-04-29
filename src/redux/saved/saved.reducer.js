@@ -10,19 +10,19 @@ const savedReducer = (state = INITIAL_STATE, action) => {
         case SavedActionTypes.SAVE_ALBUM:
             return {
                 ...state,
-                savedAlbums: state.savedAlbums.push(action.payload)
+                savedAlbums: [...state.savedAlbums, action.payload]
             }
         case SavedActionTypes.UNSAVE_ALBUM:
             return {
                 ...state,
                 savedAlbums: state.savedAlbums.filter(album => 
-                    album.id !== action.payload.id
+                    album.artistId !== action.payload.artistId
                 )
             }
         case SavedActionTypes.SAVE_ARTIST:
             return {
                 ...state,
-                savedArtists: state.savedArtists.push(action.payload)
+                savedArtists: [...state.savedArtists, action.payload]
             }
         case SavedActionTypes.UNSAVE_ARTIST:
             return {

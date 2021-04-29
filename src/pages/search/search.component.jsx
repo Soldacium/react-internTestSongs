@@ -12,7 +12,7 @@ const SearchPage = ({match}) => {
     return(
         <div className='container'>
             <Nav></Nav>
-            <div className="search-box">
+            <div className="search-box-container">
                 <Route path='/search' component={SearchBox}></Route>
             </div>        
             <div className="routes">

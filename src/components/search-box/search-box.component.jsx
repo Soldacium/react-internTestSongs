@@ -5,7 +5,6 @@ import Input from '../input/input.component';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setAlbums, setArtists } from '../../redux/search/search.actions';
-import searchIcon from '../../assets/icons/search.svg';
 
 
 class SearchBox extends React.Component {
@@ -35,7 +34,7 @@ class SearchBox extends React.Component {
             .then(res => {
                 const array = res.data || [];
                 this.props.setArtists(array);
-                console.log(array)
+                console.log(array);
             });   
         }
     }
@@ -43,7 +42,7 @@ class SearchBox extends React.Component {
     render(){
         const {buttonTypes, searchWord} = this.state;
         return(
-            <div>  
+            <div className="search-box">  
                 <div className="input">
                     <Input
                     type='text'

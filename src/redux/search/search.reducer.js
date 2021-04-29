@@ -14,11 +14,13 @@ const searchReducer = (state = INITIAL_STATE, action) => {
         case SearchActionTypes.SET_ALBUMS:
             return {
                 ...state,
+                viewedAlbum: [],
                 searchedAlbums: action.payload
             }
         case SearchActionTypes.SET_ARTISTS:
             return {
                 ...state,
+                viewedArtist: [],
                 searchedArtists: action.payload
             }
         case SearchActionTypes.SET_VIEWED_ALBUM:
