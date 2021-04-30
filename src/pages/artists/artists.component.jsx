@@ -3,27 +3,21 @@ import './artists.styles.scss';
 import { createStructuredSelector } from 'reselect';
 import { selectSearchedArtists } from '../../redux/search/search.selectors';
 import { connect } from 'react-redux';
-import ArtistItem from '../../components/artist-item/artist-item.component';
 import { selectSavedArtists } from '../../redux/saved/saved.selectors';
 import { saveArtist, unsaveArtist } from '../../redux/saved/saved.actions';
 
+import ArtistItem from '../../components/artist-item/artist-item.component';
 
-class Artists extends React.Component{
-    constructor() {
-        super()
 
-        this.state = {
-            displayName: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
-        }
+class ArtistsPage extends React.Component{
+    checkIfSaved(savedArtists, artist){
+        const foundArtist = savedArtists.filter(item => item.artistId === artist.artistId);
+        return foundArtist.length > 0 ? true : false;
     }
 
-    saveHandler(event, artist, isFavourite){
-        console.log(artist,isFavourite)
-        if(isFavourite){
-            console.log('yaas')
+    saveHandler(savedArtists, artist){
+        const saved = this.checkIfSaved(savedArtists, artist)
+        if(saved){
             this.props.unsaveArtist(artist);
         }else{
             this.props.saveArtist(artist);
@@ -32,14 +26,13 @@ class Artists extends React.Component{
 
     render(){
         const { searchedArtists, savedArtists } = this.props;
-        console.log(savedArtists);
         return(
             <div className='artists-container'>
                 {
                     searchedArtists.map((artist,i) => 
                     <ArtistItem 
-                    handleSave={(e) => this.saveHandler(e,artist,savedArtists.includes(artist))}
-                    isFavourite={savedArtists.includes(artist)}
+                    handleSave={() => this.saveHandler(savedArtists,artist)}
+                    isFavourite={this.checkIfSaved(savedArtists, artist)}
                     key={i} 
                     artist={artist}/>)
                 }
@@ -58,4 +51,4 @@ const mapStateToProps = createStructuredSelector({
     savedArtists: selectSavedArtists
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Artists);
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistsPage);

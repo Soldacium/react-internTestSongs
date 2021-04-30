@@ -32,6 +32,10 @@
         opacity: 0;
         cursor: pointer;
 
+        &.true{
+            opacity: 1;
+        }
+
         img{
             height: 1rem;
         }

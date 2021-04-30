@@ -1,0 +1,29 @@
+.saved-container{
+    display: flex;
+    flex-wrap: wrap;
+
+    >div{
+        margin: 1rem;
+    }
+
+    .saved-container-title{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .saved-artists{
+        flex: 1 1 25rem;
+        >div{
+            margin: 0.5rem;
+        }
+    }
+
+    .saved-albums{
+        flex: 1 1 25rem;
+        >div{
+            margin: 0.5rem;
+        }
+    }
+}

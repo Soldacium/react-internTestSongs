@@ -12,7 +12,7 @@ const ArtistItem = ({handleSave, artist, isFavourite, ...otherProps}) => {
             <a className="artist-link" rel="noreferrer" target="_blank" href={artist.artistLinkUrl}>
                 <img src={linkIcon} alt=""/>
             </a>
-            <div className="artist-favourite" onClick={handleSave}>
+            <div className={`artist-favourite ${isFavourite}`} onClick={handleSave}>
                 {
                     isFavourite ?
                     <img src={starFull} alt=""/> :

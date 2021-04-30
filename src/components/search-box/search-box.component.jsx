@@ -29,12 +29,11 @@ class SearchBox extends React.Component {
                 const array = res.data || [];
                 this.props.setAlbums(array);
             });            
-        } else{
+        } else {
             axios.get(`http://localhost:4000/api/itunes/artists/{${searchWord}}`)
             .then(res => {
                 const array = res.data || [];
                 this.props.setArtists(array);
-                console.log(array);
             });   
         }
     }
@@ -47,7 +46,7 @@ class SearchBox extends React.Component {
                     <Input
                     type='text'
                     name='searchWord'
-                    label='Word to search'
+                    label='Search query'
                     value={searchWord}
                     handleChange={this.handleChange}
                     required/>
@@ -55,11 +54,11 @@ class SearchBox extends React.Component {
                 <div className="buttons">
                 {
                     buttonTypes.map((button,i) => 
-                        (<Link 
-                            onClick={(e) => this.handleButtonClick(e)} 
-                            className="option" 
-                            key={i} 
-                            to={'/search/' + button}>{button}</Link>)
+                    (<Link 
+                    onClick={(e) => this.handleButtonClick(e)} 
+                    className="option" 
+                    key={i} 
+                    to={'/search/' + button}>{button}</Link>)
                     )
                 } 
                 </div>

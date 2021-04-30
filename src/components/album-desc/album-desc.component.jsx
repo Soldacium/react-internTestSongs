@@ -1,6 +1,5 @@
 import React from 'react';
 import './album-desc.styles.scss';
-import starEmpty from '../../assets/icons/star-empty.svg';
 
 const AlbumDesc = ({handleClick, album,  ...otherProps}) => {
     return(

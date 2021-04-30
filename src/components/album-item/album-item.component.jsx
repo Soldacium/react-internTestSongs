@@ -7,7 +7,7 @@ const AlbumItem = ({handleClick, handleSave, album, isFavourite, ...otherProps})
     return(
         <div className='album'>
             <img src={album.artworkUrl100 || album.artworkUrl60} alt=""/>
-            <div className="album-favourite" onClick={handleSave}>
+            <div className={`album-favourite ${isFavourite}`} onClick={handleSave}>
                 {
                     isFavourite ?
                     <img src={starFull} alt=""/> :
@@ -16,8 +16,7 @@ const AlbumItem = ({handleClick, handleSave, album, isFavourite, ...otherProps})
             </div>
             <div className="album-info">
                 <div className="album-info-artist">{album.artistName}</div>
-                <div className="album-info-name">{album.collectionName}</div>
-                       
+                <div className="album-info-name">{album.collectionName}</div>    
             </div>
             <button onClick={handleClick}>View album</button>    
 

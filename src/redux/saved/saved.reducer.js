@@ -16,7 +16,7 @@ const savedReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 savedAlbums: state.savedAlbums.filter(album => 
-                    album.artistId !== action.payload.artistId
+                    album.collectionId !== action.payload.collectionId
                 )
             }
         case SavedActionTypes.SAVE_ARTIST:
@@ -28,7 +28,7 @@ const savedReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 savedArtists: state.savedArtists.filter(artist => 
-                    artist.id !== action.payload.id
+                    artist.artistId !== action.payload.artistId
                 )
             }
         default:

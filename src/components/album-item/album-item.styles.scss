@@ -25,6 +25,10 @@
         transition: 0.1s ease;
         cursor: pointer;
 
+        &.true{
+            opacity: 1;
+        }
+
         img{
             height: 1rem;
         }
