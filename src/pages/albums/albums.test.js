@@ -1,9 +1,11 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent, cleanup, waitFor, wait } from "@testing-library/react";
 import AlbumsPage from "./albums.component";
 import { store } from '../../redux/store';
-import { setAlbums, setArtists } from "../../redux/search/search.actions";
+import { setAlbums, setArtists, setViewedAlbum } from "../../redux/search/search.actions";
+import mount from "enzyme/build/mount";
+import shallow from "enzyme/build/shallow";
 
 afterEach(cleanup);
 
@@ -13,10 +15,30 @@ const testAlbum = {
   artistId: "121341",
   artistLinkUrl: "http://null.com"
 }
+
+const testAlbumInfo = [
+    {
+        artworkUrl100: '',
+        collectionName: '',
+        artistName: ''
+    },
+    {
+        trackTimeMillis: 1241245125,
+        trackName: 'aaaaaa'
+    },
+    {
+        trackTimeMillis: 21523654745,
+        trackName: 'bbbbbb'
+    },
+]
 const testAlbums = [testAlbum];
 
 function setStoreAlbums(albums){
     store.dispatch(setAlbums(albums))
+}
+
+function setStoreViewedAlbum(albumSongs) {
+    store.dispatch(setViewedAlbum(albumSongs));
 }
 
 function renderWithRedux(component, store) {
@@ -38,7 +60,7 @@ it("renders searched album", () => {
     setStoreAlbums(testAlbums)
     
     expect(container.querySelector('.album')).not.toBeNull();
-})
+});
 
 it("can save and unsave albums", () => {
     const { container } = renderWithRedux(<AlbumsPage/>,store);
@@ -65,11 +87,11 @@ it("can save and unsave albums", () => {
     expect(container.querySelector(".album-favourite.false")).not.toBeNull();
 });
 
-it("can open album details", () => {
+it("can open album details", async () => {
     const { container } = renderWithRedux(<AlbumsPage/>,store);
     setStoreAlbums(testAlbums);
 
-    
+
     fireEvent(
         container.querySelector(".album-view-details"),
         new MouseEvent('click', {
@@ -78,7 +100,8 @@ it("can open album details", () => {
             view: window
         })
     );
-    console.log(container.querySelector(".album-view-details"))
+
+    setStoreViewedAlbum(testAlbumInfo);
+    expect(container.querySelector('.album-desc')).not.toBeNull()
     
-    expect(container.querySelector(".album-desc")).not.toBeNull();
-})
+});

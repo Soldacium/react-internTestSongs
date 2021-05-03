@@ -5,7 +5,7 @@ import starFull from '../../assets/icons/star-full.svg';
 
 const AlbumItem = ({handleClick, handleSave, album, isFavourite, ...otherProps}) => {
     return(
-        <div className='album'>
+        <div className='album' key={otherProps.key}>
             <img src={album.artworkUrl100 || album.artworkUrl60} alt=""/>
             <div className={`album-favourite ${isFavourite}`} onClick={handleSave}>
                 {

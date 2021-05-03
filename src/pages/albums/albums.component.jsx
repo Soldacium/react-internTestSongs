@@ -15,8 +15,8 @@ import AlbumDesc from '../../components/album-desc/album-desc.component';
 
 class AlbumsPage extends React.Component {
 
-    getAlbumSongs(event, albumId){
-        axios.get(`http://localhost:4000/api/itunes/album/${albumId}`)
+    getAlbumSongs(albumId){
+        return axios.get(`http://localhost:4000/api/itunes/album/${albumId}`)
         .then(res => {
             const album = res.data.results;
             this.props.setViewedAlbum(album);
@@ -47,7 +47,7 @@ class AlbumsPage extends React.Component {
                     {
                         searchedAlbums.map((album,i) => 
                         <AlbumItem
-                        handleClick={(e) => this.getAlbumSongs(e,album.collectionId)}
+                        handleClick={() => this.getAlbumSongs(album.collectionId)}
                         handleSave={() => this.saveHandler(savedAlbums, album)}
                         key={i}
                         isFavourite={this.checkIfSaved(savedAlbums,album)}
@@ -62,7 +62,7 @@ class AlbumsPage extends React.Component {
                     }
                     {
                         viewedAlbum.map((song,i) => 
-                            i > 0 ?<Song song={song} key={song.trackId}></Song> : <div></div>
+                            i > 0 ? <Song song={song} key={i}></Song> : <div key={i}></div>
                         )
                     }
                 </div>
