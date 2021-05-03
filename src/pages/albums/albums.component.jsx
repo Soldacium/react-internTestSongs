@@ -60,7 +60,6 @@ class AlbumsPage extends React.Component {
                         <AlbumDesc album={viewedAlbumCollection}></AlbumDesc>
                         : <div></div>
                     }
-
                     {
                         viewedAlbum.map((song,i) => 
                             i > 0 ?<Song song={song} key={song.trackId}></Song> : <div></div>
@@ -70,7 +69,6 @@ class AlbumsPage extends React.Component {
             </div>
         )        
     }
- 
 }
 
 const mapStateToProps = createStructuredSelector({

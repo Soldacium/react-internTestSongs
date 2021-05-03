@@ -18,7 +18,7 @@ const AlbumItem = ({handleClick, handleSave, album, isFavourite, ...otherProps})
                 <div className="album-info-artist">{album.artistName}</div>
                 <div className="album-info-name">{album.collectionName}</div>    
             </div>
-            <button onClick={handleClick}>View album</button>    
+            <button className="album-view-details" onClick={handleClick}>View album</button>    
 
         </div>
     )
